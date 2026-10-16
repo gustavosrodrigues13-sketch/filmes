@@ -1,0 +1,350 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: sans-serif;
+}
+
+/* HOME */
+.home {
+    width: 100%;
+    min-height: 100vh;
+    background-color: #000;
+    display: flex;
+    flex-direction: column;
+}
+
+/* HEADER */
+.header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 24px;
+    width: 100%;
+    min-height: 100px;
+    padding: 20px 40px;
+    position: relative;
+    z-index: 20;
+}
+
+.logo h1 {
+    font-size: 35px;
+    color: #fff;
+    font-weight: 600;
+    line-height: 1.1;
+}
+
+.header .navigation ul {
+    display: flex;
+    align-items: center;
+    gap: 40px;
+    list-style: none;
+}
+
+.header .navigation ul li a {
+    color: #fff;
+    font-size: 15px;
+    font-weight: 500;
+    text-decoration: none;
+    transition: color 0.25s ease;
+}
+
+.header .navigation ul li a:hover {
+    color: #6f6fff;
+}
+
+.header-actions {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+}
+
+.header .btn button,
+.col button {
+    padding: 10px 30px;
+    background-color: blue;
+    border: 1px solid blue;
+    border-radius: 6px;
+    color: #fff;
+    font-size: 15px;
+    font-weight: 500;
+    cursor: pointer;
+    transition: background-color 0.25s ease, transform 0.25s ease;
+}
+
+.header .btn button:hover,
+.col button:hover {
+    background-color: #0000cc;
+}
+
+/* Botão hambúrguer (visível apenas no mobile) */
+.menu-toggle {
+    display: none;
+    flex-direction: column;
+    justify-content: space-between;
+    width: 30px;
+    height: 22px;
+    padding: 0;
+    background: transparent;
+    border: none;
+    cursor: pointer;
+}
+
+.menu-toggle span {
+    display: block;
+    width: 100%;
+    height: 3px;
+    border-radius: 2px;
+    background-color: #fff;
+    transition: transform 0.3s ease, opacity 0.3s ease;
+}
+
+.menu-toggle.active span:nth-child(1) {
+    transform: translateY(9.5px) rotate(45deg);
+}
+
+.menu-toggle.active span:nth-child(2) {
+    opacity: 0;
+}
+
+.menu-toggle.active span:nth-child(3) {
+    transform: translateY(-9.5px) rotate(-45deg);
+}
+
+/* MAIN */
+.main {
+    display: flex;
+    flex: 1;
+    align-items: center;
+    gap: 48px;
+    width: 100%;
+    padding: 40px;
+}
+
+.col {
+    flex: 1 1 0;
+    min-width: 0;
+}
+
+.col1 {
+    max-width: 560px;
+}
+
+.col h2 {
+    font-size: 45px;
+    color: #fff;
+    font-weight: 600;
+    line-height: 1.15;
+}
+
+.col p {
+    font-size: 20px;
+    color: gray;
+    font-weight: 500;
+    margin-top: 20px;
+    line-height: 1.5;
+}
+
+.col button {
+    margin-top: 30px;
+}
+
+/* GRID DE CARDS */
+.cards {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 20px;
+    align-content: center;
+}
+
+.card {
+    width: 100%;
+    height: 170px;
+    border-radius: 10px;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    transition: transform 0.6s ease;
+    cursor: pointer;
+}
+
+.card1 {
+    background-image: url(assets/afterlife.jpg);
+}
+
+.card2 {
+    background-image: url(assets/transformers.jpg);
+}
+
+.card3 {
+    background-image: url(assets/mowgli.jpg);
+}
+
+.card4 {
+    background-image: url(assets/shift.png);
+}
+
+.card5 {
+    background-image: url(assets/squidgame.webp);
+}
+
+.card6 {
+    background-image: url(assets/harrypotter.jpg);
+}
+
+.card:hover {
+    transform: translateY(-10px);
+}
+
+/* ===================== RESPONSIVO ===================== */
+
+/* Tablets paisagem */
+@media (max-width: 1100px) {
+    .header {
+        padding: 18px 28px;
+    }
+
+    .header .navigation ul {
+        gap: 24px;
+    }
+
+    .main {
+        gap: 32px;
+        padding: 32px 28px 48px;
+    }
+
+    .col h2 {
+        font-size: 38px;
+    }
+
+    .col p {
+        font-size: 18px;
+    }
+}
+
+/* Tablets retrato e celulares grandes: empilha as colunas e ativa o menu */
+@media (max-width: 900px) {
+    .menu-toggle {
+        display: flex;
+    }
+
+    .header .navigation {
+        position: absolute;
+        top: 100%;
+        left: 0;
+        width: 100%;
+        background-color: #0a0a0a;
+        border-top: 1px solid #1f1f1f;
+        max-height: 0;
+        overflow: hidden;
+        transition: max-height 0.35s ease;
+    }
+
+    .header .navigation.open {
+        max-height: 320px;
+    }
+
+    .header .navigation ul {
+        flex-direction: column;
+        align-items: stretch;
+        gap: 0;
+        padding: 8px 0;
+    }
+
+    .header .navigation ul li {
+        width: 100%;
+    }
+
+    .header .navigation ul li a {
+        display: block;
+        padding: 14px 28px;
+    }
+
+    .main {
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+        gap: 36px;
+        padding: 32px 28px 56px;
+    }
+
+    .col {
+        flex: 0 0 auto;
+        width: 100%;
+    }
+
+    .col1 {
+        max-width: 640px;
+    }
+
+    .cards {
+        max-width: 720px;
+        margin: 0 auto;
+    }
+}
+
+/* Celulares */
+@media (max-width: 600px) {
+    .header {
+        min-height: 72px;
+        padding: 14px 18px;
+        gap: 12px;
+    }
+
+    .logo h1 {
+        font-size: 26px;
+    }
+
+    .header .btn button,
+    .col button {
+        padding: 10px 20px;
+        font-size: 14px;
+    }
+
+    .header .navigation ul li a {
+        padding: 12px 18px;
+    }
+
+    .main {
+        gap: 28px;
+        padding: 24px 18px 44px;
+    }
+
+    .col h2 {
+        font-size: 30px;
+    }
+
+    .col p {
+        font-size: 16px;
+        margin-top: 14px;
+    }
+
+    .col button {
+        margin-top: 22px;
+    }
+
+    .cards {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: 14px;
+    }
+
+    .card {
+        height: 140px;
+        border-radius: 8px;
+    }
+}
+
+/* Celulares pequenos */
+@media (max-width: 380px) {
+    .logo h1 {
+        font-size: 22px;
+    }
+
+    .col h2 {
+        font-size: 26px;
+    }
+
+    .card {
+        height: 120px;
+    }
+}
