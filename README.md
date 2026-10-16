@@ -1,84 +1,106 @@
 # 🎬 MovieCity — Landing Page
 
-Landing page responsiva de um serviço de streaming fictício, construída com **React + Vite**. O objetivo do projeto é ser um exercício prático de componentização, estilização com CSS puro e adaptação de layout para diferentes tamanhos de tela.
+Landing page responsiva de um serviço de streaming fictício, feita com **React + Vite** e **CSS puro**. É um projeto de estudo focado em componentização, estilização sem frameworks e adaptação de layout para diferentes telas.
 
 ![React](https://img.shields.io/badge/React-19-61dafb?logo=react&logoColor=white)
 ![Vite](https://img.shields.io/badge/Vite-7-646cff?logo=vite&logoColor=white)
 ![CSS](https://img.shields.io/badge/CSS-puro-1572b6?logo=css3&logoColor=white)
+![Node](https://img.shields.io/badge/Node-20.19%2B%20%7C%2022.12%2B-339933?logo=nodedotjs&logoColor=white)
 
-## 📌 Sumário
+<!-- Substitua pelo print real do projeto: -->
+<!-- ![Preview do MovieCity](./docs/preview.png) -->
 
-1. [O que o projeto faz](#-o-que-o-projeto-faz)
-2. [Tecnologias utilizadas](#-tecnologias-utilizadas)
-3. [Pré-requisitos](#-pré-requisitos)
-4. [Como rodar](#-como-rodar)
-5. [Estrutura de pastas](#-estrutura-de-pastas)
-6. [Como as partes se conectam](#-como-as-partes-se-conectam)
-7. [Responsividade](#-responsividade)
-8. [Scripts disponíveis](#-scripts-disponíveis)
-9. [Próximos passos / ideias](#-próximos-passos--ideias)
+## Sumário
 
-## 🎯 O que o projeto faz
+- [Visão geral](#visão-geral)
+- [Funcionalidades](#funcionalidades)
+- [Tecnologias](#tecnologias)
+- [Começando](#começando)
+- [Scripts](#scripts)
+- [Estrutura de pastas](#estrutura-de-pastas)
+- [Arquitetura](#arquitetura)
+- [Responsividade](#responsividade)
+- [Acessibilidade](#acessibilidade)
+- [Checklist de qualidade](#checklist-de-qualidade)
+- [Roadmap](#roadmap)
 
-A página é dividida em duas áreas principais:
+## Visão geral
 
-- **Header (cabeçalho):** logo "MovieCity", menu de navegação (Filmes, Categoria, Sobre, Contato) e um botão de Login.
-- **Main (conteúdo principal):** uma coluna com texto de chamada ("Seus Filmes") + botão **Mais**, e outra coluna com um grid de 6 cards de filmes (Afterlife, Transformers, Mowgli, Shift, Round 6 e Harry Potter).
+A página tem duas áreas:
 
-Em telas pequenas, as duas colunas se empilham, o grid de cards passa a ter 2 colunas e o menu de navegação vira um menu hambúrguer que abre e fecha.
+- **Header:** logo, menu de navegação (Filmes, Categoria, Sobre, Contato) e botão de Login.
+- **Main:** à esquerda, o texto de chamada ("Seus Filmes") com o botão **Mais**; à direita, um grid com 6 cards de filmes (Afterlife, Transformers, Mowgli, Shift, Round 6 e Harry Potter).
 
-## 🧰 Tecnologias utilizadas
+## Funcionalidades
 
-| Tecnologia | Para que serve |
+- Layout em duas colunas no desktop, empilhado no mobile
+- Grid de cards que se reorganiza em 2 colunas em telas pequenas
+- Menu hambúrguer animado, que fecha ao clicar em um link
+- Quatro breakpoints cuidadosamente ajustados (de 1100px a 380px)
+- Sem dependências de UI: todo o visual é CSS escrito à mão
+
+## Tecnologias
+
+| Tecnologia | Uso |
 |---|---|
-| React 19 | Biblioteca de UI baseada em componentes |
-| Vite 7 | Servidor de desenvolvimento com HMR e bundler de produção |
-| JavaScript (ESM) | Linguagem e sistema de módulos |
-| CSS puro | Estilização global e responsividade (media queries) |
-| ESLint | Padronização e análise estática do código |
+| React 19 | Componentes e estado da UI |
+| Vite 7 | Servidor de desenvolvimento (HMR) e build de produção |
+| JavaScript (ESM) | Linguagem e módulos |
+| CSS puro | Estilos globais e media queries |
+| ESLint | Padronização e análise estática |
 
-> Nenhuma biblioteca de UI (Bootstrap, Tailwind, styled-components) é usada de propósito: o objetivo é praticar CSS de verdade.
+> Bootstrap, Tailwind e styled-components não são usados de propósito: o objetivo é praticar CSS de verdade.
 
-## ✅ Pré-requisitos
+## Começando
 
-- **Node.js 20.19+ ou 22.12+** (o Vite 7 exige essas versões)
-- **npm** (já vem junto com o Node.js) — ou yarn/pnpm, se preferir
-- Um editor de código, como o VS Code
+### Pré-requisitos
 
-Confira as versões instaladas:
+- **Node.js 20.19+ ou 22.12+** (exigência do Vite 7)
+- **npm** (já vem com o Node) — yarn ou pnpm também funcionam
 
 ```bash
 node -v
 npm -v
 ```
 
-## 🚀 Como rodar
+### Instalação
 
 ```bash
-# 1. Instalar as dependências
+# 1. Clone o repositório e entre na pasta
+git clone <url-do-repositorio>
+cd 01_landingpage
+
+# 2. Instale as dependências
 npm install
 
-# 2. Subir o servidor de desenvolvimento
+# 3. Inicie o servidor de desenvolvimento
 npm run dev
 ```
 
-O Vite abre em <http://localhost:5173>. Cada vez que você salvar um arquivo, a página atualiza sozinha (HMR — Hot Module Replacement).
+Acesse <http://localhost:5173>. A página atualiza sozinha a cada arquivo salvo (HMR).
 
-Para conferir o layout, abra o DevTools (`F12`), ative o Device Toolbar (`Ctrl + Shift + M`) e teste nas larguras **1440px, 1024px, 768px, 600px e 375px**, confirmando que não aparece barra de rolagem horizontal.
-
-Antes de considerar pronto:
+### Build de produção
 
 ```bash
-npm run lint
-npm run build
+npm run build     # gera a pasta dist/
+npm run preview   # pré-visualiza o build localmente
 ```
 
-O build gera a pasta `dist/`, pronta para publicar em qualquer host estático (Netlify, Vercel, GitHub Pages, etc.). Para pré-visualizar o resultado: `npm run preview`.
+A pasta `dist/` pode ser publicada em qualquer host estático (Netlify, Vercel, GitHub Pages etc.).
 
-## 📁 Estrutura de pastas
+## Scripts
+
+| Comando | Descrição |
+|---|---|
+| `npm run dev` | Servidor de desenvolvimento com HMR em `localhost:5173` |
+| `npm run build` | Build otimizado de produção em `dist/` |
+| `npm run preview` | Serve o conteúdo de `dist/` localmente |
+| `npm run lint` | Executa o ESLint em todo o projeto |
+
+## Estrutura de pastas
 
 ```
-01_landinpage/
+01_landingpage/
 ├── public/
 │   └── vite.svg              # favicon
 ├── src/
@@ -96,7 +118,7 @@ O build gera a pasta `dist/`, pronta para publicar em qualquer host estático (N
 └── vite.config.js
 ```
 
-## 🔗 Como as partes se conectam
+## Arquitetura
 
 ```
 index.html → main.jsx → App.jsx → Home.jsx ─┬─→ Header.jsx
@@ -104,45 +126,56 @@ index.html → main.jsx → App.jsx → Home.jsx ─┬─→ Header.jsx
 ```
 
 1. `index.html` contém apenas `<div id="root">` e o script de entrada.
-2. `main.jsx` usa `createRoot()` para renderizar o `<App />` dentro dessa div.
+2. `main.jsx` usa `createRoot()` para renderizar `<App />` nessa div.
 3. `App.jsx` importa o CSS global e renderiza `<Home />`.
 4. `Home.jsx` monta `<Header />` e `<Main />`.
-5. Os componentes usam `className`, e todo o visual vem de `src/index.css`.
+5. Os componentes usam `className`; todo o visual vem de `src/index.css`.
 
-## 📱 Responsividade
+## Responsividade
 
-O layout foi construído mobile-friendly desde a base e usa quatro breakpoints:
+O layout é pensado para telas pequenas desde a base e usa quatro breakpoints:
 
 | Breakpoint | Alvo | O que muda |
 |---|---|---|
 | `max-width: 1100px` | Tablets em paisagem | Espaçamentos, gaps e tipografia menores |
-| `max-width: 900px` | Tablets retrato / celulares grandes | Colunas empilham, texto centralizado, menu hambúrguer aparece |
-| `max-width: 600px` | Celulares | Grid de cards passa para 2 colunas, fontes e paddings reduzidos |
+| `max-width: 900px` | Tablets em retrato / celulares grandes | Colunas empilham, texto centralizado, menu hambúrguer aparece |
+| `max-width: 600px` | Celulares | Grid de cards com 2 colunas, fontes e paddings reduzidos |
 | `max-width: 380px` | Celulares pequenos | Ajustes finos de fonte e altura dos cards |
 
-Técnicas usadas:
+**Técnicas usadas**
 
-- Unidades relativas (`%`, `minmax(0, 1fr)`, `max-height`) em vez de larguras fixas, exceto alturas de card, que são controladas por breakpoint.
-- **Flexbox** para as colunas do `main` e para o alinhamento do header.
-- **CSS Grid** com `minmax(0, ...)` para os cards, evitando que o conteúdo force a coluna a crescer além do container.
-- Menu hambúrguer só com CSS: no desktop a nav é normal; abaixo de 900px ela vira um painel com `position: absolute` animado via `max-height`.
-- `min-height: 100vh` no `.home` em vez de `height: 100vh`, para o conteúdo poder crescer sem ser cortado em telas baixas.
-- Acessibilidade: o botão do menu tem `aria-label` e `aria-expanded`, e o menu fecha ao clicar em qualquer link.
+- **Unidades relativas** (`%`, `minmax(0, 1fr)`, `max-height`) em vez de larguras fixas; as alturas dos cards são definidas por breakpoint.
+- **Flexbox** nas colunas do `main` e no alinhamento do header.
+- **CSS Grid** com `minmax(0, ...)` nos cards, impedindo que o conteúdo estique a coluna além do container.
+- **Menu hambúrguer:** no desktop a nav é normal; abaixo de 900px vira um painel com `position: absolute`, animado via `max-height`. O estado aberto/fechado é controlado pelo React.
+- **`min-height: 100vh`** no `.home` (em vez de `height`), para o conteúdo crescer sem ser cortado em telas baixas.
 
-## 📜 Scripts disponíveis
+### Como testar
 
-| Comando | Descrição |
-|---|---|
-| `npm run dev` | Inicia o servidor de desenvolvimento com HMR em <http://localhost:5173> |
-| `npm run build` | Gera a versão otimizada de produção em `dist/` |
-| `npm run preview` | Serve localmente o build de `dist/` para conferência |
-| `npm run lint` | Roda o ESLint em todo o projeto |
+1. Abra o DevTools (`F12`) e ative o Device Toolbar (`Ctrl + Shift + M`).
+2. Teste as larguras **1440, 1024, 768, 600 e 375 px**.
+3. Confirme que **não aparece rolagem horizontal** em nenhuma delas.
 
-## 💡 Próximos passos / ideias
+## Acessibilidade
 
-- Substituir os `div`s dos cards por botões `<button>` para melhorar a acessibilidade e o teclado.
-- Dar título e nota a cada filme, deixando os cards mais informativos.
-- Buscar a lista de filmes de uma API (ex.: TMDB) e renderizar os cards dinamicamente com `.map()`.
-- Transformar os cards em um carrossel horizontal no mobile.
-- Adicionar `prefers-reduced-motion` para desativar as animações de hover em quem preferir.
-- Migrar o CSS para CSS Modules ou para uma solução por componente conforme o projeto crescer.
+- O botão do menu tem `aria-label` e `aria-expanded`.
+- O menu fecha ao clicar em qualquer link.
+- Melhorias previstas: cards como `<button>` (foco por teclado) e suporte a `prefers-reduced-motion`.
+
+## Checklist de qualidade
+
+Antes de considerar uma alteração pronta:
+
+- [ ] `npm run lint` sem erros
+- [ ] `npm run build` conclui com sucesso
+- [ ] Sem rolagem horizontal nas 5 larguras de teste
+- [ ] Menu hambúrguer abre, fecha e responde ao teclado
+
+## Roadmap
+
+- [ ] Trocar os `div`s dos cards por `<button>` (acessibilidade e teclado)
+- [ ] Adicionar título e nota a cada filme
+- [ ] Buscar os filmes em uma API (ex.: TMDB) e renderizar com `.map()`
+- [ ] Transformar os cards em carrossel horizontal no mobile
+- [ ] Respeitar `prefers-reduced-motion` nas animações de hover
+- [ ] Migrar para CSS Modules conforme o projeto crescer
